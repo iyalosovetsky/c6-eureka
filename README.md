@@ -18,7 +18,7 @@ Pinouts
   
   output:
    - pwm Fan  ->  5
-   - fan door conrtol -> 4
+   - outdoor cover relay -> 4
 
   input:
     - fan speed sensor -> 7

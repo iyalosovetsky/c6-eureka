@@ -21,6 +21,7 @@ Pinouts
    - outdoor cover relay -> 4
 
   input:
+  
     - fan speed sensor -> 7
 
    

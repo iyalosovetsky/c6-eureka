@@ -17,11 +17,12 @@ Set
 Pinouts
   
   output:
+  
    - pwm Fan  ->  5
    - outdoor cover relay -> 4
 
   input:
-  
+
     - fan speed sensor -> 7
 
    

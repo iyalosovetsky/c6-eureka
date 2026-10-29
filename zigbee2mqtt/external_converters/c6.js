@@ -67,6 +67,8 @@ export default {
         m.temperature({
             "endpointNames": ["internal_temp"],
             "description": "Internal Temp",
+            // z2m default is 10 s / 1 °C, the chip hovers on a degree boundary; change is in 0.01 °C
+            "reporting": {min: 30, max: 600, change: 200},
         }),
         // m.binary({
         //     "name":"system_init",

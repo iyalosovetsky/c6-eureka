@@ -35,8 +35,8 @@
 #include "driver/pulse_cnt.h"
 
 /* Zigbee OTA configuration */
-#define OTA_UPGRADE_RUNNING_FILE_VERSION    0x01010200  // Increment this value when the running image is updated
-#define OTA_UPGRADE_DOWNLOADED_FILE_VERSION 0x01010201  // Increment this value when the downloaded image is updated
+#define OTA_UPGRADE_RUNNING_FILE_VERSION    0x01010300  // Increment this value when the running image is updated
+#define OTA_UPGRADE_DOWNLOADED_FILE_VERSION 0x01010301  // Increment this value when the downloaded image is updated
 #define OTA_UPGRADE_HW_VERSION              0x0101      // The hardware version, this can be used to differentiate between different hardware versions
 
 /* Zigbee dimmable light configuration */
@@ -732,9 +732,8 @@ void loop() {
       // Serial.printf("[Illuminance Sensor] fanCounterVal value: %d\r\n", fanCounterVal*10);
       // zbIlluminanceSensor.setIlluminance(fanCounterVal*10);  // use raw illuminance here!
       // zbIlluminanceSensor.report();
-      zbAnalogFan.reportAnalogInput();
-      zbTempSensor.report();
-      
+      // no forced reports here: setAnalogInputReporting/setReporting in setup() decide what is sent
+
 
      }
     

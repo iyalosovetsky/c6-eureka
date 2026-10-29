@@ -35,8 +35,8 @@
 #include "driver/pulse_cnt.h"
 
 /* Zigbee OTA configuration */
-#define OTA_UPGRADE_RUNNING_FILE_VERSION    0x01010300  // Increment this value when the running image is updated
-#define OTA_UPGRADE_DOWNLOADED_FILE_VERSION 0x01010301  // Increment this value when the downloaded image is updated
+#define OTA_UPGRADE_RUNNING_FILE_VERSION    0x01010400  // Increment this value when the running image is updated
+#define OTA_UPGRADE_DOWNLOADED_FILE_VERSION 0x01010401  // Increment this value when the downloaded image is updated
 #define OTA_UPGRADE_HW_VERSION              0x0101      // The hardware version, this can be used to differentiate between different hardware versions
 
 /* Zigbee dimmable light configuration */
@@ -686,7 +686,7 @@ void setup() {
   // begin() (the commented calls above) it has no effect and every 5 s RPM update and every
   // 1 s temperature update went out as a report (~12 messages/min in zigbee2mqtt).
   zbAnalogFan.setAnalogInputReporting(10, 300, 25);  // RPM: >=10 s apart, at least every 5 min, on a 25 RPM change
-  zbTempSensor.setReporting(30, 600, 1.0);           // chip temperature: >=30 s apart, every 10 min, on a 1 °C change
+  zbTempSensor.setReporting(30, 600, 2.0);           // chip temperature: >=30 s apart, every 10 min, on a 2 °C change
 
   xTaskCreate(fan_speed_sensor_value_update, "fan_speed_sensor_value_update", 2048, NULL, 10, NULL);
   // xTaskCreate(illuminance_sensor_value_update, "illuminance_sensor_value_update", 2048, NULL, 10, NULL);

@@ -35,8 +35,8 @@
 #include "driver/pulse_cnt.h"
 
 /* Zigbee OTA configuration */
-#define OTA_UPGRADE_RUNNING_FILE_VERSION    0x01010100  // Increment this value when the running image is updated
-#define OTA_UPGRADE_DOWNLOADED_FILE_VERSION 0x01010101  // Increment this value when the downloaded image is updated
+#define OTA_UPGRADE_RUNNING_FILE_VERSION    0x01010200  // Increment this value when the running image is updated
+#define OTA_UPGRADE_DOWNLOADED_FILE_VERSION 0x01010201  // Increment this value when the downloaded image is updated
 #define OTA_UPGRADE_HW_VERSION              0x0101      // The hardware version, this can be used to differentiate between different hardware versions
 
 /* Zigbee dimmable light configuration */

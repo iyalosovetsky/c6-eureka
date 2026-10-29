@@ -87,7 +87,7 @@ export default {
             "description": "fan rpm",
             "cluster": "genAnalogInput",
             "attribute": "presentValue",
-            "reporting": {attribute: "presentValue", min: 5, max: 360000, change: 1},
+            "reporting": {attribute: "presentValue", min: 10, max: 3600, change: 25},
             "endpointName": "fan_speed",
             "access":"STATE_GET"
         }),        

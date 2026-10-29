@@ -226,7 +226,7 @@ static void temp_sensor_value_update(void *arg) {
     // Serial.printf("[temp_sensor_value_update] Updated temp sensor value to %.2f°C\r\n", (float) (abs(fanCounterVal*3)%40));
     // Update temperature value in Temperature sensor EP
     zbTempSensor.setTemperature(tsens_value);
-    delay(1000);
+    delay(10000);  // the chip temperature changes slowly; reporting above decides what is sent
   }
 }
 
@@ -681,7 +681,13 @@ void setup() {
   
   Serial.println("");
   Serial.println("Start");
-  
+
+  // Attribute reporting has to be set after Zigbee.begin(), once joined: called before
+  // begin() (the commented calls above) it has no effect and every 5 s RPM update and every
+  // 1 s temperature update went out as a report (~12 messages/min in zigbee2mqtt).
+  zbAnalogFan.setAnalogInputReporting(10, 300, 25);  // RPM: >=10 s apart, at least every 5 min, on a 25 RPM change
+  zbTempSensor.setReporting(30, 600, 1.0);           // chip temperature: >=30 s apart, every 10 min, on a 1 °C change
+
   xTaskCreate(fan_speed_sensor_value_update, "fan_speed_sensor_value_update", 2048, NULL, 10, NULL);
   // xTaskCreate(illuminance_sensor_value_update, "illuminance_sensor_value_update", 2048, NULL, 10, NULL);
   xTaskCreate(temp_sensor_value_update, "temp_sensor_value_update", 2048, NULL, 10, NULL);
